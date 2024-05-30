@@ -1,7 +1,8 @@
 namespace Gluu{
     type CustomContext = {
             "network": ipaddr,
-            "browser": String
+            "browser": String, 
+            "current_time": Long
     }
     type Url {
         "protocol": String,
