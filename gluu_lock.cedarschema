@@ -1,8 +1,14 @@
 namespace Gluu{
-    type CustomContext = {
+    type Context = {
             "network": ipaddr,
             "browser": String, 
             "current_time": Long
+    };
+    type StandardClaims{
+        "iss": TrustedIssuer,
+        "exp": Long,
+        "aud": String,
+        "iat": Long,
     };
     type Url {
         "protocol": String,
@@ -30,10 +36,7 @@ namespace Gluu{
         "role": String,
     };
     entity Id_token  = {
-        "iss": TrustedIssuer,
-        "exp": Long,
-        "aud": String,
-        "iat": Long,
+        "std_claims" = StandardClaims,
         "acr": [String],
         "amr": String,
         "azp": String,
@@ -43,50 +46,44 @@ namespace Gluu{
         "role": [String]
     };
     entity Access_token  = {
-        "iss": TrustedIssuer,
-        "exp": Long,
-        "aud": String,
-        "iat": Long,
+        "std_claims" = StandardClaims,
         "nbf": Long,
         "scope": String
     };
     entity Userinfo_token  = {
-        "iss": TrustedIssuer,
-        "exp": Long,
-        "sub": String,
-        "aud": String,
+        "std_claims" = StandardClaims,
         "name": String,
         "phone_number": String,
         "birthdate": String,
-        "role": String,
+        "role": [String],
         "email": String
     };
     action POST appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action GET appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action PUT appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action DELETE appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action HEAD appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action PATCH appliesTo {
         resource: HTTP_Request,
-        context: CustomContext
+        context: Context
     };
     action Access appliesTo {
         resource: Application;
-        context: CustomContext
+        context: Context
     };
 }
