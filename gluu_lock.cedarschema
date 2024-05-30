@@ -1,15 +1,19 @@
 namespace Gluu{
-    type url {
-        "transport": String,
+    type CustomContext = {
+            "network": ipaddr,
+            "browser": String
+    }
+    type Url {
+        "protocol": String,
         "host": String,
         "path": String,
         "queryParams": Record
     }
     entity TrustedIssuer = {
-        "issuer_entity_id": url
+        "issuer_entity_id": Url
     }
     entity HTTP_Request = {
-        "url": url
+        "url": Url
         "header": [String],
         "accept": [String]
     }
@@ -58,51 +62,30 @@ namespace Gluu{
     };
     action POST appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action GET appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action PUT appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action DELETE appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action HEAD appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action PATCH appliesTo {
         resource: HTTP_Request,
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     };
     action Access appliesTo {
         resource: Application;
-        context: {
-            network: ipaddr,
-            browser: String
-        }
+        context: CustomContext
     }
 }
