@@ -3,45 +3,42 @@ namespace Gluu{
             "network": ipaddr,
             "browser": String, 
             "current_time": Long
-    }
+    };
     type Url {
         "protocol": String,
         "host": String,
         "path": String,
         "queryParams": Record
-    }
+    };
     entity TrustedIssuer = {
         "issuer_entity_id": Url
-    }
+    };
+    entity Client in [TrustedClient];
     entity HTTP_Request = {
         "url": Url
         "header": [String],
         "accept": [String]
-    }
+    };
     entity Application = {
         "name": String
-    }
+    };
     entity User = {
         "username": String,
         "email": String,
         "role": String,
-    };
-    entity Client  = {
-        "client_id": String,
-        "iss": TrustedIssuer
     };
     entity Id_token  = {
         "iss": TrustedIssuer,
         "exp": Long,
         "aud": String,
         "iat": Long,
-        "acr": String,
+        "acr": [String],
         "amr": String,
         "azp": String,
         "name": String,
         "phone_number": String,
         "birthdate": String,
-        "role": String
+        "role": [String]
     };
     entity Access_token  = {
         "iss": TrustedIssuer,
@@ -88,5 +85,5 @@ namespace Gluu{
     action Access appliesTo {
         resource: Application;
         context: CustomContext
-    }
+    };
 }
