@@ -13,6 +13,10 @@ namespace Gluu{
     entity TrustedIssuer = {
         "issuer_entity_id": Url
     };
+    entity Client  = {
+        "client_id": String,
+        "iss": TrustedIssuer
+    };
     entity Client in [TrustedClient];
     entity HTTP_Request = {
         "url": Url
