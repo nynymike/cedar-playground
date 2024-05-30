@@ -35,8 +35,15 @@ namespace Gluu{
         "email": String,
         "role": String,
     };
+    entity User in [Role];
+    entity Access_token  = {
+        "std_claims" = StandardClaims,
+        "nbf": Long,
+        "scope": String
+    };
     entity Id_token  = {
         "std_claims" = StandardClaims,
+        "sub": String,
         "acr": [String],
         "amr": String,
         "azp": String,
@@ -45,12 +52,8 @@ namespace Gluu{
         "birthdate": String,
         "role": [String]
     };
-    entity Access_token  = {
-        "std_claims" = StandardClaims,
-        "nbf": Long,
-        "scope": String
-    };
     entity Userinfo_token  = {
+        "sub" = String,
         "std_claims" = StandardClaims,
         "name": String,
         "phone_number": String,
