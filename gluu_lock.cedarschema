@@ -7,8 +7,7 @@ namespace Gluu{
     type Url {
         "protocol": String,
         "host": String,
-        "path": String,
-        "queryParams": Record
+        "path": String
     };
     entity TrustedIssuer = {
         "issuer_entity_id": Url
@@ -17,7 +16,6 @@ namespace Gluu{
         "client_id": String,
         "iss": TrustedIssuer
     };
-    entity Client in [TrustedClient];
     entity HTTP_Request = {
         "url": Url
         "header": [String],
@@ -60,7 +58,8 @@ namespace Gluu{
         "name": String,
         "phone_number": String,
         "birthdate": String,
-        "role": String
+        "role": String,
+        "email": String
     };
     action POST appliesTo {
         resource: HTTP_Request,
