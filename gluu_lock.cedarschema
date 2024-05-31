@@ -13,7 +13,8 @@ namespace Jans{
         "iss": TrustedIssuer,
         "exp": Long,
         "aud": String,
-        "iat": Long
+        "iat": Long,
+        "jti": String
     };
     type Url {
         "protocol": String,
