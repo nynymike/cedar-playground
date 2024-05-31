@@ -1,14 +1,19 @@
-namespace Gluu{
+namespace Jans{
     type Context = {
             "network": ipaddr,
+            "network_type": String,
             "browser": String, 
-            "current_time": Long
+            "operating_system": String,
+            "device_health": [String],
+            "current_time": Long,
+            "geolocation": [String],
+            "fraud_indicators": [String]
     };
     type StandardClaims{
         "iss": TrustedIssuer,
         "exp": Long,
         "aud": String,
-        "iat": Long,
+        "iat": Long
     };
     type Url {
         "protocol": String,
@@ -33,7 +38,8 @@ namespace Gluu{
     entity User = {
         "username": String,
         "email": String,
-        "role": String,
+        "phone_number": String,
+        "role": String
     };
     entity User in [Role];
     entity Access_token  = {
