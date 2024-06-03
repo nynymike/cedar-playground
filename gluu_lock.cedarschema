@@ -29,14 +29,16 @@ namespace Jans{
         "iss": TrustedIssuer
     };
     entity HTTP_Request = {
-        "url": Url
+        "url": Url,
         "header": [String],
         "accept": [String]
     };
     entity Application = {
-        "name": String
+        "name": String,
+        "client": Client
     };
     entity User = {
+        "sub": String,
         "username": String,
         "email": String,
         "phone_number": String,
@@ -93,7 +95,7 @@ namespace Jans{
         context: Context
     };
     action Access appliesTo {
-        resource: Application;
+        resource: Application,
         context: Context
     };
 }
