@@ -1,4 +1,4 @@
-namespace Jans{
+namespace Jans {
     type Context = {
             "network": ipaddr,
             "network_type": String,
@@ -7,95 +7,107 @@ namespace Jans{
             "device_health": Set<String>,
             "current_time": Long,
             "geolocation": Set<String>,
-            "fraud_indicators": Set<String>
+            "fraud_indicators": Set<String>,
     };
     type StandardClaims = {
         "iss": TrustedIssuer,
         "exp": Long,
         "aud": String,
         "iat": Long,
-        "jti": String
+        "jti": String,
     };
     type Url = {
         "protocol": String,
         "host": String,
-        "path": String
+        "path": String,
     };
+    type email_address = {
+        id: String, 
+        domain: String,
+    }
     entity TrustedIssuer = {
-        "issuer_entity_id": Url
+        "issuer_entity_id": Url,
     };
     entity Client  = {
         "client_id": String,
-        "iss": TrustedIssuer
+        "iss": TrustedIssuer,
     };
     entity HTTP_Request = {
         "url": Url,
         "header": Set<String>,
-        "accept": Set<String>
+        "accept": Set<String>,
     };
     entity Application = {
         "name": String,
-        "client": Client
+        "client": Client,
     };
     entity User = {
         "sub": String,
         "username": String,
-        "email": String,
+        "email": email_address,
         "phone_number": String,
-        "role": String
+        "role": String,
     };
     entity User in [Role];
     entity Access_token  = {
         "std_claims": StandardClaims,
         "nbf": Long,
-        "scope": String
+        "scope": String,
     };
-    entity Id_token  = {
+    entity id_token  = {
         "std_claims": StandardClaims,
         "sub": String,
         "acr": Set<String>,
         "amr": String,
         "azp": String,
         "name": String,
+        "email": email_address,
         "phone_number": String,
         "birthdate": String,
-        "role": Set<String>
+        "role": Set<String>,
     };
     entity Userinfo_token  = {
         "sub": String,
         "std_claims": StandardClaims,
         "name": String,
+        "email": email_address,
         "phone_number": String,
         "birthdate": String,
         "role": Set<String>,
-        "email": String
     };
     action POST appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action GET appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action PUT appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action DELETE appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action HEAD appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action PATCH appliesTo {
+        principal: Client,
         resource: HTTP_Request,
-        context: Context
+        context: Context,
     };
     action Access appliesTo {
+        principal: Client,
         resource: Application,
-        context: Context
+        context: Context,
     };
 }
