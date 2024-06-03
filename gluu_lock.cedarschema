@@ -24,7 +24,7 @@ namespace Jans {
     type email_address = {
         id: String, 
         domain: String,
-    }
+    };
     entity TrustedIssuer = {
         "issuer_entity_id": Url,
     };
@@ -48,7 +48,6 @@ namespace Jans {
         "phone_number": String,
         "role": String,
     };
-    entity User in [Role];
     entity Access_token  = {
         "std_claims": StandardClaims,
         "nbf": Long,
