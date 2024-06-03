@@ -105,7 +105,7 @@ namespace Jans {
         context: Context,
     };
     action Access appliesTo {
-        principal: Client,
+        principal: User,
         resource: Application,
         context: Context,
     };
