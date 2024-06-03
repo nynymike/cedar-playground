@@ -4,19 +4,19 @@ namespace Jans{
             "network_type": String,
             "browser": String, 
             "operating_system": String,
-            "device_health": [String],
+            "device_health": Set<String>,
             "current_time": Long,
-            "geolocation": [String],
-            "fraud_indicators": [String]
+            "geolocation": Set<String>,
+            "fraud_indicators": Set<String>
     };
-    type StandardClaims{
+    type StandardClaims = {
         "iss": TrustedIssuer,
         "exp": Long,
         "aud": String,
         "iat": Long,
         "jti": String
     };
-    type Url {
+    type Url = {
         "protocol": String,
         "host": String,
         "path": String
@@ -30,8 +30,8 @@ namespace Jans{
     };
     entity HTTP_Request = {
         "url": Url,
-        "header": [String],
-        "accept": [String]
+        "header": Set<String>,
+        "accept": Set<String>
     };
     entity Application = {
         "name": String,
@@ -46,28 +46,28 @@ namespace Jans{
     };
     entity User in [Role];
     entity Access_token  = {
-        "std_claims" = StandardClaims,
+        "std_claims": StandardClaims,
         "nbf": Long,
         "scope": String
     };
     entity Id_token  = {
-        "std_claims" = StandardClaims,
+        "std_claims": StandardClaims,
         "sub": String,
-        "acr": [String],
+        "acr": Set<String>,
         "amr": String,
         "azp": String,
         "name": String,
         "phone_number": String,
         "birthdate": String,
-        "role": [String]
+        "role": Set<String>
     };
     entity Userinfo_token  = {
-        "sub" = String,
-        "std_claims" = StandardClaims,
+        "sub": String,
+        "std_claims": StandardClaims,
         "name": String,
         "phone_number": String,
         "birthdate": String,
-        "role": [String],
+        "role": Set<String>,
         "email": String
     };
     action POST appliesTo {
