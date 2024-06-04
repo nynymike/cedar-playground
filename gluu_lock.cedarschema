@@ -41,7 +41,8 @@ namespace Jans {
         "name": String,
         "client": Client,
     };
-    entity User = {
+    entity Role;
+    entity User in [Role] {
         "sub": String,
         "username": String,
         "email": email_address,
