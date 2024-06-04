@@ -9,13 +9,6 @@ namespace Jans {
             "geolocation": Set<String>,
             "fraud_indicators": Set<String>,
     };
-    type StandardClaims = {
-        "iss": TrustedIssuer,
-        "exp": Long,
-        "aud": String,
-        "iat": Long,
-        "jti": String,
-    };
     type Url = {
         "protocol": String,
         "host": String,
@@ -50,30 +43,42 @@ namespace Jans {
         "role": Set<String>,
     };
     entity Access_token  = {
-        "std_claims": StandardClaims,
+        "aud": String,
+        "exp": Long,
+        "iat": Long,
+        "iss": TrustedIssuer,
+        "jti": String,
         "nbf": Long,
         "scope": String,
     };
     entity id_token  = {
-        "std_claims": StandardClaims,
-        "sub": String,
         "acr": Set<String>,
         "amr": String,
+        "aud": String,
         "azp": String,
-        "name": String,
-        "email": email_address,
-        "phone_number": String,
         "birthdate": String,
+        "email": email_address,
+        "exp": Long,
+        "iat": Long,
+        "iss": TrustedIssuer,
+        "jti": String,        
+        "name": String,
+        "phone_number": String,
         "role": Set<String>,
+        "sub": String,
     };
     entity Userinfo_token  = {
-        "sub": String,
-        "std_claims": StandardClaims,
-        "name": String,
-        "email": email_address,
-        "phone_number": String,
+        "aud": String,
         "birthdate": String,
+        "email": email_address,
+        "exp": Long,
+        "iat": Long,
+        "iss": TrustedIssuer,
+        "jti": String,
+        "name": String,
+        "phone_number": String,
         "role": Set<String>,
+        "sub": String,
     };
     action POST appliesTo {
         principal: Client,
@@ -106,7 +111,7 @@ namespace Jans {
         context: Context,
     };
     action Access appliesTo {
-        principal: User,
+        principal: [User, Role],
         resource: Application,
         context: Context,
     };
