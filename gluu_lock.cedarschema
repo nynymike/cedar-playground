@@ -46,7 +46,7 @@ namespace Jans {
         "username": String,
         "email": email_address,
         "phone_number": String,
-        "role": String,
+        "role": Set<String>,
     };
     entity Access_token  = {
         "std_claims": StandardClaims,
