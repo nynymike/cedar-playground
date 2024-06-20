@@ -81,12 +81,7 @@ namespace Jans {
     };
 
     // ******  Actions  ******
-    action Read appliesTo {
-        principal: [User, Role],
-        resource: Application,
-        context: Context,
-    };
-    action Write appliesTo {
+    action Compare appliesTo {
         principal: [User, Role],
         resource: Application,
         context: Context,
@@ -96,12 +91,32 @@ namespace Jans {
         resource: Application,
         context: Context,
     };
-    action Compare appliesTo {
+    action Monitor appliesTo {
+        principal: [User, Role],
+        resource: Application,
+        context: Context,
+    };
+    action Read appliesTo {
         principal: [User, Role],
         resource: Application,
         context: Context,
     };
     action Search appliesTo {
+        principal: [User, Role],
+        resource: Application,
+        context: Context,
+    };
+    action Share appliesTo {
+        principal: [User, Role],
+        resource: Application,
+        context: Context,
+    };
+    action Tag appliesTo {
+        principal: [User, Role],
+        resource: Application,
+        context: Context,
+    };
+    action Write appliesTo {
         principal: [User, Role],
         resource: Application,
         context: Context,
