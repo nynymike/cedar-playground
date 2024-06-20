@@ -79,6 +79,8 @@ namespace Jans {
         role: Set<String>,
         sub: String,
     };
+
+    // ******  Actions  ******
     action Read appliesTo {
         principal: [User, Role],
         resource: Application,
