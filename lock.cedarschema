@@ -48,7 +48,7 @@ namespace Jans {
         iss: TrustedIssuer,
         jti: String,
         nbf: Long,
-        scope: String,
+        scope: Set<String>,
     };
     entity id_token  = {
         acr: Set<String>,
