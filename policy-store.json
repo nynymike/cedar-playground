@@ -1,0 +1,9 @@
+{
+    "d2dd8e53deea7b4c5edc42cba424aff41a5500ecfc6c": {
+        "name": "support-portal",
+        "description": "Support Portal policies and schema",
+        "policies": {},
+        "identity_source": {},
+        "schema": ""
+    }
+}
